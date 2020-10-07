@@ -1,0 +1,48 @@
+G:\Paysys_Projects\ECRLib\PayECR\PayECR\obj\Debug\PayECR.csprojResolveAssemblyReference.cache
+G:\Paysys_Projects\ECRLib\PayECR\PayECR\bin\Debug\PayECR.dll
+G:\Paysys_Projects\ECRLib\PayECR\PayECR\bin\Debug\PayECR.pdb
+G:\Paysys_Projects\ECRLib\PayECR\PayECR\obj\Debug\PayECR.dll
+G:\Paysys_Projects\ECRLib\PayECR\PayECR\obj\Debug\PayECR.pdb
+G:\Paysys_Projects\ECRLib\PayECR1.0.0.1\PayECR\bin\Debug\PayECR.dll
+G:\Paysys_Projects\ECRLib\PayECR1.0.0.1\PayECR\bin\Debug\PayECR.pdb
+G:\Paysys_Projects\ECRLib\PayECR1.0.0.1\PayECR\obj\Debug\PayECR.csprojResolveAssemblyReference.cache
+G:\Paysys_Projects\ECRLib\PayECR1.0.0.1\PayECR\obj\Debug\PayECR.dll
+G:\Paysys_Projects\ECRLib\PayECR1.0.0.1\PayECR\obj\Debug\PayECR.pdb
+G:\Paysys_Projects\ECRLib\PayECR1.0.0.1x86\PayECR\bin\Debug\PayECR.dll
+G:\Paysys_Projects\ECRLib\PayECR1.0.0.1x86\PayECR\bin\Debug\PayECR.pdb
+G:\Paysys_Projects\ECRLib\PayECR1.0.0.1x86\PayECR\obj\Debug\PayECR.csprojResolveAssemblyReference.cache
+G:\Paysys_Projects\ECRLib\PayECR1.0.0.1x86\PayECR\obj\Debug\PayECR.dll
+G:\Paysys_Projects\ECRLib\PayECR1.0.0.1x86\PayECR\obj\Debug\PayECR.pdb
+C:\ECR Release 1.0\PayECR1.0.0.1x86\PayECR\bin\Debug\PayECR.dll
+C:\ECR Release 1.0\PayECR1.0.0.1x86\PayECR\bin\Debug\PayECR.pdb
+C:\ECR Release 1.0\PayECR1.0.0.1x86\PayECR\obj\Debug\ResolveAssemblyReference.cache
+C:\ECR Release 1.0\PayECR1.0.0.1x86\PayECR\obj\Debug\PayECR.dll
+C:\ECR Release 1.0\PayECR1.0.0.1x86\PayECR\obj\Debug\PayECR.pdb
+C:\ECR Release 1.0\Release 1.1\Sample Code\PayECR\bin\Debug\PayECR.dll
+C:\ECR Release 1.0\Release 1.1\Sample Code\PayECR\bin\Debug\PayECR.pdb
+C:\ECR Release 1.0\Release 1.1\Sample Code\PayECR\obj\Debug\ResolveAssemblyReference.cache
+C:\ECR Release 1.0\Release 1.1\Sample Code\PayECR\obj\Debug\PayECR.dll
+C:\ECR Release 1.0\Release 1.1\Sample Code\PayECR\obj\Debug\PayECR.pdb
+C:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\PayECR.dll
+C:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\PayECR.pdb
+C:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\obj\Debug\PayECR.dll
+C:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\obj\Debug\PayECR.pdb
+C:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\obj\Debug\PayECR.csprojResolveAssemblyReference.cache
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\PayECR.dll
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\PayECR.pdb
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\mscorlib.dll
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\sortkey.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\sorttbls.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\big5.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\bopomofo.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\ksc.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\prc.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\prcp.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\xjis.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\normidna.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\normnfc.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\normnfd.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\normnfkc.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\bin\Debug\normnfkd.nlp
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\obj\Debug\PayECR.dll
+D:\Users\Kavee\Documents\Paysys Projects\ECR\c#\PayECR Release 1.3 (code)\Sample Code\PayECR\obj\Debug\PayECR.pdb
