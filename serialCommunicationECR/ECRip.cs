@@ -438,6 +438,12 @@ namespace serialCommunicationECR
 
             }
 
+            else if (ResponseMsg == "R902")
+            {
+                ResponseMsg = "ECHO";
+                StatusCode = ReceivedMessege.Substring(4, 2);
+            }
+
             if (StatusCode == "00")
             {
                 if (textBox7.Text != "")
@@ -815,7 +821,14 @@ namespace serialCommunicationECR
                         msgPacket += "ExchangeRate :" + ExchangeRate + "\n";
                     }
                 }
+                else if (ResponseMsg == "R902")
+                {
+                    ResponseMsg = "QR SALE";
+                    StatusCode = ReceivedMessege.Substring(4, 2);
 
+                    msgPacket += "Response :" + ResponseMsg + "\n";
+                    msgPacket += "StatusCode :" + StatusCode + "\n";
+                }
                 #endregion
 
 
