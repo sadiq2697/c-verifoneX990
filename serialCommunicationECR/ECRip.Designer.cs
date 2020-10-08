@@ -123,6 +123,7 @@ namespace serialCommunicationECR
             this.richTextBox1.Size = new System.Drawing.Size(523, 68);
             this.richTextBox1.TabIndex = 70;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // textBox1
             // 

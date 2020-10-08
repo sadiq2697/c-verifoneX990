@@ -299,6 +299,11 @@ namespace serialCommunicationECR
             }
         }
 
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         //for receipt
         private void ProcessReceiveString(string ReceivedMessege)
         {
@@ -386,7 +391,7 @@ namespace serialCommunicationECR
 
             }
 
-            else if (ResponseMsg == "G200")
+            else if (ResponseMsg == "G200" || response == "G290")
             {
                 ResponseMsg = "QR SALE";
                 StatusCode = ReceivedMessege.Substring(4, 2);
@@ -406,7 +411,7 @@ namespace serialCommunicationECR
                 }
             }
 
-            else if (ResponseMsg == "Q200")
+            else if (ResponseMsg == "Q200" || ResponseMsg == "Q290")
             {
                 ResponseMsg = "QR SALE";
                 StatusCode = ReceivedMessege.Substring(4, 2);
@@ -520,7 +525,7 @@ namespace serialCommunicationECR
                         Receipt.WriteLine("BatchAmount #  :   " + BatchAmount + "\n");
                     }
                 }
-                else if (response == "G200")
+                else if (response == "G200" || response == "G290")
                 {
                     using (StreamWriter Receipt = File.AppendText(NewFilePath))
                     {
@@ -728,7 +733,7 @@ namespace serialCommunicationECR
 
                 }
 
-                else if (ResponseMsg == "Q200")
+                else if (ResponseMsg == "Q200" || ResponseMsg == "Q290")
                 {
                     ResponseMsg = "QR SALE";
                     StatusCode = ReceivedMessege.Substring(4, 2);
@@ -776,7 +781,7 @@ namespace serialCommunicationECR
                     }
 
                 }
-                else if (ResponseMsg == "G200")
+                else if (ResponseMsg == "G200" || ResponseMsg == "G290")
                 {
                     ResponseMsg = "QR SALE";
                     StatusCode = ReceivedMessege.Substring(4, 2);
