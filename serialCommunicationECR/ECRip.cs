@@ -291,7 +291,7 @@ namespace serialCommunicationECR
             }
             else
             {
-                richTextBox1.Text = MsgFormat(ls_receive;
+                richTextBox1.Text = MsgFormat(ls_receive);
                 lbl_status.Text = ls_status;
                
                 button2.Enabled = true;
