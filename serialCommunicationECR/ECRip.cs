@@ -173,8 +173,8 @@ namespace serialCommunicationECR
 
             if (textBox1.Text == "C203" || textBox1.Text == "C292")
             { command += textBox4.Text.PadLeft(12, '0'); }
-            else
-            { command += textBox4.Text; }
+ /*           else
+            { command += textBox4.Text; }*/
 
             if (textBox1.Text == "C290")
             {
@@ -203,8 +203,14 @@ namespace serialCommunicationECR
                
             }
 
-
-            command += textBox4.Text.PadRight(24,' ');
+            if (command == "C200" || command == "C290")
+            {
+                command += textBox4.Text.PadRight(24, '0');
+            }
+            else
+            {
+                command += textBox4.Text.PadRight(24, ' ');
+            }
 
             //ecr.SendReceive(command, ref ls_receive, ref li_status, ref ls_status, 1000);
 
@@ -300,6 +306,11 @@ namespace serialCommunicationECR
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
         }
