@@ -360,6 +360,11 @@ namespace serialCommunicationECR
                     CustomerID = ReceivedMessege.Substring(146, 26);
                 }
 
+                if (ReceivedMessege.Length > 178)
+                {
+                    StatusDesc = ReceivedMessege.Substring(178, 32);
+                    Recall = ReceivedMessege.Substring(210, 1);
+                }
             }
             else if (ResponseMsg == "R500")
             {
@@ -602,6 +607,7 @@ namespace serialCommunicationECR
         private string MsgFormat(string ReceivedMessege)
         {
             string msgPacket = "";
+            System.Diagnostics.Debug.WriteLine(ReceivedMessege);
 
             if (ReceivedMessege != "")
             {
@@ -691,12 +697,20 @@ namespace serialCommunicationECR
                     {
                         PartnerTrxID = ReceivedMessege.Substring(50, 32);
                         AlipayTrxID = ReceivedMessege.Substring(82, 64);
-                        CustomerID = ReceivedMessege.Substring(146, 26);
+                        CustomerID = ReceivedMessege.Substring(146, 32);
 
                         // msg
                         msgPacket += "PartnerTrxID :" + PartnerTrxID + "\n";
                         msgPacket += "AlipayTrxID :" + AlipayTrxID + "\n";
                         msgPacket += "CustomerID :" + CustomerID + "\n";
+                    }
+
+                    if (ReceivedMessege.Length > 178)
+                    {
+                        StatusDesc = ReceivedMessege.Substring(178, 32);
+                        Recall = ReceivedMessege.Substring(210, 1);
+                        msgPacket += "StatusDesc :" + StatusDesc + "\n";
+                        msgPacket += "Recall :" + Recall + "\n";
                     }
 
                 }
