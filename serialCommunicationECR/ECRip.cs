@@ -9,6 +9,7 @@ using System.IO.Ports;
 using System.Threading;
 using PayECR;
 using System.IO;
+using System.Diagnostics;
 
 namespace serialCommunicationECR
 {
@@ -171,6 +172,11 @@ namespace serialCommunicationECR
 
             command += textBox3.Text.PadLeft(12, '0');
 
+            if (textBox1.Text == "C201") 
+            {
+                command += textBox4.Text.PadLeft(6, '0');
+            }
+
             if (textBox1.Text == "C203" || textBox1.Text == "C292")
             { command += textBox4.Text.PadLeft(12, '0'); }
  /*           else
@@ -178,6 +184,7 @@ namespace serialCommunicationECR
 
             if (textBox1.Text == "C290")
             {
+                command += textBox4.Text;
                 string QRCode = textBox6.Text;
 
                  string totalL = QRCode.Length.ToString().PadLeft(4, '0');// to get total length of qrcode
@@ -202,18 +209,20 @@ namespace serialCommunicationECR
                 }
                
             }
-
-            if (command == "C200" || command == "C290")
+            Debug.WriteLine("Check : " + textBox1.Text + "  " + (textBox1.Text == "C200" || textBox1.Text == "C290"));
+            if (textBox1.Text == "C200")
             {
-                command += textBox4.Text.PadRight(24, '0');
+                Debug.WriteLine("Checked 1");
+                command += textBox5.Text.PadLeft(24, '0');
             }
-            else
+            else if (textBox1.Text != "C200" && textBox1.Text != "C290")
             {
-                command += textBox4.Text.PadRight(24, ' ');
+                Debug.WriteLine("Checked 3");
+                command += textBox5.Text.PadRight(24, ' ');
             }
 
             //ecr.SendReceive(command, ref ls_receive, ref li_status, ref ls_status, 1000);
-
+            Debug.WriteLine("Check : " + command);
             return command;
 
         }
@@ -233,7 +242,6 @@ namespace serialCommunicationECR
                 try
                 {
             
-                  
                     ecr.SendReceive(ls_data, ref ls_receive, ref li_status, ref ls_status,2000);
                     if (ls_receive != "")
                     { ProcessReceiveString(ls_receive); }
@@ -385,7 +393,6 @@ namespace serialCommunicationECR
                 BatchNumber = ReceivedMessege.Substring(8, 6);
                 BatchCount = ReceivedMessege.Substring(14, 3);
                 BatchAmount = ReceivedMessege.Substring(17, 12);
-
             }
 
             else if (ResponseMsg == "R290")
@@ -734,7 +741,6 @@ namespace serialCommunicationECR
                     BatchCount = ReceivedMessege.Substring(14, 3);
                     BatchAmount = ReceivedMessege.Substring(17, 12);
 
-
                     // display in window
                     msgPacket += "Response :" + ResponseMsg + "\n";
                     msgPacket += "HostNo :" + HostNo + "\n";
@@ -742,6 +748,42 @@ namespace serialCommunicationECR
                     msgPacket += "BatchNumber :" + BatchNumber + "\n";
                     msgPacket += "BatchCount :" + BatchCount + "\n";
                     msgPacket += "BatchAmount :" + BatchAmount + "\n";
+
+                    if (ReceivedMessege.Length > 29)
+                    {
+                        HostNo = ReceivedMessege.Substring(29, 2);
+                        StatusCode = ReceivedMessege.Substring(31, 2);
+                        BatchNumber = ReceivedMessege.Substring(33, 6);
+                        BatchCount = ReceivedMessege.Substring(39, 3);
+                        BatchAmount = ReceivedMessege.Substring(42, 12);
+
+                        msgPacket += "\n";
+                        msgPacket += "HostNo :" + HostNo + "\n";
+                        msgPacket += "StatusCode :" + StatusCode + "\n";
+                        msgPacket += "BatchNumber :" + BatchNumber + "\n";
+                        msgPacket += "BatchCount :" + BatchCount + "\n";
+                        msgPacket += "BatchAmount :" + BatchAmount + "\n";
+                    }
+                    else if (ReceivedMessege.Length > 54)
+                    {
+                        HostNo = ReceivedMessege.Substring(54, 2);
+                        StatusCode = ReceivedMessege.Substring(56, 2);
+                        BatchNumber = ReceivedMessege.Substring(58, 6);
+                        BatchCount = ReceivedMessege.Substring(64, 3);
+                        BatchAmount = ReceivedMessege.Substring(67, 12);
+
+                        msgPacket += "\n";
+                        msgPacket += "HostNo :" + HostNo + "\n";
+                        msgPacket += "StatusCode :" + StatusCode + "\n";
+                        msgPacket += "BatchNumber :" + BatchNumber + "\n";
+                        msgPacket += "BatchCount :" + BatchCount + "\n";
+                        msgPacket += "BatchAmount :" + BatchAmount + "\n";
+                    }
+                    else if (ReceivedMessege.Length > 79) 
+                    {
+                        msgPacket += "Other Host : " + ReceivedMessege.Substring(79);
+                    }
+
 
                 }
 
