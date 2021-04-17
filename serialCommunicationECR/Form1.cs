@@ -597,10 +597,5 @@ namespace serialCommunicationECR
             f1.Show();
             this.Refresh();
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

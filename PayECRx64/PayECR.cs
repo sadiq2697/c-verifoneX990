@@ -119,6 +119,7 @@ namespace PayECRx64
                 Do_Error_Log = false;
             }
 
+
         }
 
         public ECR(string _com, int _timeout, int _receive_buffer_size, string _log_path, bool _log, bool _error_log)
@@ -181,7 +182,6 @@ namespace PayECRx64
                     writedata = writedata + "\x03";
                     li_lrc = computeLRC(writedata);
 
-                    
                     ls_send = ls_send + writedata + Convert.ToChar(li_lrc);
 
                     try

@@ -80,7 +80,7 @@ namespace serialCommunicationECR
 
 
                 ecr.SendReceive(command, ref ls_receive, ref li_status, ref ls_status, 2000);
-                richTextBox1.Text = ls_receive;
+                richTextBox1.Text = MsgFormat(ls_receive);
                 lbl_status.Text = ls_status;
                 command = textBox1.Text;
 
@@ -172,19 +172,15 @@ namespace serialCommunicationECR
 
             command += textBox3.Text.PadLeft(12, '0');
 
-            if (textBox1.Text == "C201") 
+            if (textBox1.Text == "C203" || textBox1.Text == "C292")
+            { command += textBox4.Text.PadLeft(12, '0'); }
+            else if (textBox1.Text == "C201")
             {
                 command += textBox4.Text.PadLeft(6, '0');
             }
 
-            if (textBox1.Text == "C203" || textBox1.Text == "C292")
-            { command += textBox4.Text.PadLeft(12, '0'); }
- /*           else
-            { command += textBox4.Text; }*/
-
             if (textBox1.Text == "C290")
             {
-                command += textBox4.Text;
                 string QRCode = textBox6.Text;
 
                  string totalL = QRCode.Length.ToString().PadLeft(4, '0');// to get total length of qrcode
@@ -209,20 +205,14 @@ namespace serialCommunicationECR
                 }
                
             }
-            Debug.WriteLine("Check : " + textBox1.Text + "  " + (textBox1.Text == "C200" || textBox1.Text == "C290"));
-            if (textBox1.Text == "C200")
+
+            if (textBox1.Text != "C201")
             {
-                Debug.WriteLine("Checked 1");
-                command += textBox5.Text.PadLeft(24, '0');
-            }
-            else if (textBox1.Text != "C200" && textBox1.Text != "C290")
-            {
-                Debug.WriteLine("Checked 3");
-                command += textBox5.Text.PadRight(24, ' ');
+                command += textBox4.Text.PadRight(24, ' ');
             }
 
             //ecr.SendReceive(command, ref ls_receive, ref li_status, ref ls_status, 1000);
-            Debug.WriteLine("Check : " + command);
+
             return command;
 
         }
@@ -242,10 +232,10 @@ namespace serialCommunicationECR
                 try
                 {
             
+                  
                     ecr.SendReceive(ls_data, ref ls_receive, ref li_status, ref ls_status,2000);
                     if (ls_receive != "")
                     { ProcessReceiveString(ls_receive); }
-
                 }
                 catch (Exception ex)
                 {
@@ -275,12 +265,17 @@ namespace serialCommunicationECR
 
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label8_Click(object sender, EventArgs e)
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -305,22 +300,12 @@ namespace serialCommunicationECR
             }
             else
             {
-                richTextBox1.Text = MsgFormat(ls_receive);
+                richTextBox1.Text = ls_receive;
                 lbl_status.Text = ls_status;
                
                 button2.Enabled = true;
                 command = textBox1.Text;
             }
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         //for receipt
@@ -329,9 +314,7 @@ namespace serialCommunicationECR
             string ResponseMsg = "",
                 CardNo = "", ExpiryDate = "", StatusCode = "", ApprovalCode = "", RRN = "", TransactionTrace = "",
                 BatchNumber = "", HostNo = "", TID = "", MID = "", AID = "", TC = "", CardholderName = "", CardType = "",
-                PartnerTrxID = "", AlipayTrxID = "", CustomerID = "", Amount = "", BatchCount = "", BatchAmount = "", AppTrxID= "", MAHTrxID = "",
-                MBBTransId = "", StatusDesc = "", AppId = "", Currency = "", TotalAmount = "", CashFeeType = "", CashFee = "", OrderNo = "", EndTime = "",
-                UserAccount = "", CardTypeDesc = "", Recall = "", ProdBrand = "", TotalRMB = "", ExchangeRate = "";
+                PartnerTrxID = "", AlipayTrxID = "", CustomerID = "", Amount = "", BatchCount = "", BatchAmount = "",AppTrxID= "",MAHTrxID = "";
             string FileName = "";
 
             ResponseMsg = ReceivedMessege.Substring(0, 4);
@@ -360,7 +343,7 @@ namespace serialCommunicationECR
                     MAHTrxID = ReceivedMessege.Substring(142, 16);
                     AppTrxID = ReceivedMessege.Substring(158, 16);
                 }
-
+               
             }
             else if (ResponseMsg == "R201")
             {
@@ -378,12 +361,7 @@ namespace serialCommunicationECR
                     AlipayTrxID = ReceivedMessege.Substring(82, 64);
                     CustomerID = ReceivedMessege.Substring(146, 26);
                 }
-
-                if (ReceivedMessege.Length > 178)
-                {
-                    StatusDesc = ReceivedMessege.Substring(178, 32);
-                    Recall = ReceivedMessege.Substring(210, 1);
-                }
+                
             }
             else if (ResponseMsg == "R500")
             {
@@ -393,6 +371,7 @@ namespace serialCommunicationECR
                 BatchNumber = ReceivedMessege.Substring(8, 6);
                 BatchCount = ReceivedMessege.Substring(14, 3);
                 BatchAmount = ReceivedMessege.Substring(17, 12);
+
             }
 
             else if (ResponseMsg == "R290")
@@ -412,59 +391,6 @@ namespace serialCommunicationECR
                     CustomerID = ReceivedMessege.Substring(145, 26);
 
 
-            }
-
-            else if (ResponseMsg == "G200" || response == "G290")
-            {
-                ResponseMsg = "QR SALE";
-                StatusCode = ReceivedMessege.Substring(4, 2);
-                TransactionTrace = ReceivedMessege.Substring(6, 6);
-                BatchNumber = ReceivedMessege.Substring(12, 6);
-                HostNo = ReceivedMessege.Substring(18, 2);
-                TID = ReceivedMessege.Substring(20, 8);
-                MID = ReceivedMessege.Substring(28, 15);
-
-                if (ReceivedMessege.Length > 43)
-                {
-                    MAHTrxID = ReceivedMessege.Substring(43, 40);
-                    AppTrxID = ReceivedMessege.Substring(83, 40);
-                    ProdBrand = ReceivedMessege.Substring(123, 40);
-                    TotalRMB = ReceivedMessege.Substring(163, 16);
-                    ExchangeRate = ReceivedMessege.Substring(179, 16);
-                }
-            }
-
-            else if (ResponseMsg == "Q200" || ResponseMsg == "Q290")
-            {
-                ResponseMsg = "QR SALE";
-                StatusCode = ReceivedMessege.Substring(4, 2);
-                StatusDesc = ReceivedMessege.Substring(6, 32);
-                TransactionTrace = ReceivedMessege.Substring(38, 6);
-                BatchNumber = ReceivedMessege.Substring(44, 6);
-                HostNo = ReceivedMessege.Substring(50, 2);
-                TID = ReceivedMessege.Substring(52, 8);
-                MID = ReceivedMessege.Substring(60, 15);
-
-                if (ReceivedMessege.Length > 75)
-                {
-                    AppId = ReceivedMessege.Substring(75, 8);
-                    Currency = ReceivedMessege.Substring(83, 3);
-                    TotalAmount = ReceivedMessege.Substring(86, 12);
-                    CashFeeType = ReceivedMessege.Substring(98, 3);
-                    CashFee = ReceivedMessege.Substring(101, 12);
-                    OrderNo = ReceivedMessege.Substring(113, 14);
-                    MBBTransId = ReceivedMessege.Substring(127, 32);
-                    EndTime = ReceivedMessege.Substring(159, 14);
-                    UserAccount = ReceivedMessege.Substring(173, 128);
-                    CardTypeDesc = ReceivedMessege.Substring(301, 100);
-                }
-
-            }
-
-            else if (ResponseMsg == "R902")
-            {
-                ResponseMsg = "ECHO";
-                StatusCode = ReceivedMessege.Substring(4, 2);
             }
 
             if (StatusCode == "00")
@@ -510,13 +436,14 @@ namespace serialCommunicationECR
                         Receipt.WriteLine("PrtnrTrxID #  :   " + PartnerTrxID + "\n");
                         Receipt.WriteLine("AlpayTrxID #  :   " + AlipayTrxID + "\n");
                         Receipt.WriteLine("CustomerID #  :   " + CustomerID + "\n");
-
+                       
                         Receipt.WriteLine("AMOUNT RM     " + textBox3.Text + "\n");
 
                     }
 
 
                 }
+
                 else if (response == "R201")
 
                 {
@@ -540,7 +467,7 @@ namespace serialCommunicationECR
                 }
                 else if (response == "R500")
                 {
-
+                    
                     using (StreamWriter Receipt = File.AppendText(NewFilePath))
                     {
                         Receipt.WriteLine("HOST: " + HostNo + "\n");
@@ -552,48 +479,6 @@ namespace serialCommunicationECR
                         Receipt.WriteLine("BATCH #        :   " + BatchNumber + "\n");
                         Receipt.WriteLine("BatchCount #   :   " + BatchCount + "\n");
                         Receipt.WriteLine("BatchAmount #  :   " + BatchAmount + "\n");
-                    }
-                }
-                else if (response == "G200" || response == "G290")
-                {
-                    using (StreamWriter Receipt = File.AppendText(NewFilePath))
-                    {
-                        Receipt.WriteLine("HOST: " + HostNo + "\n");
-                        Receipt.WriteLine("TID: " + TID + "\n");
-                        Receipt.WriteLine("MID: " + MID + "\n");
-                        Receipt.WriteLine("\t" + ResponseMsg + "\n");
-                        Receipt.WriteLine("STATUS CODE: " + StatusCode + "\n");
-                        Receipt.WriteLine("BATCH #  :        " + BatchNumber + "\n");
-                        Receipt.WriteLine("TRACE #  :        " + TransactionTrace + "\n");
-                        Receipt.WriteLine("MAH Trx ID #:     " + MAHTrxID + "\n");
-                        Receipt.WriteLine("App Trx ID #:" + AppTrxID + "\n");
-                        Receipt.WriteLine("PRODUCT BRAND :" + ProdBrand + "\n");
-                        Receipt.WriteLine("TOTAL RMB :" + TotalRMB + "\n");
-                        Receipt.WriteLine("EXCHANGE RATE :" + ExchangeRate + "\n");
-                    }
-                }
-                else if (response == "R200")
-                {
-                    using (StreamWriter Receipt = File.AppendText(NewFilePath))
-                    {
-                        Receipt.WriteLine("HOST: " + HostNo + "\n");
-                        Receipt.WriteLine("TID: " + TID + "\n");
-                        Receipt.WriteLine("MID: " + MID + "\n");
-                        Receipt.WriteLine("\t" + ResponseMsg + "\n");
-                        Receipt.WriteLine("STATUS CODE: " + StatusCode + "\n");
-                        Receipt.WriteLine("STATUS DESC: " + StatusDesc + "\n");
-                        Receipt.WriteLine("APP ID :" + AppId);
-                        Receipt.WriteLine("BATCH #  :        " + BatchNumber + "\n");
-                        Receipt.WriteLine("TRACE #  :        " + TransactionTrace + "\n");
-                        Receipt.WriteLine("TOTAL AMOUNT :" + Currency + "\n");
-                        Receipt.WriteLine("CASH FEE TYPE :" + CashFeeType + "\n");
-                        Receipt.WriteLine("CASH FEE :" + CashFee + "\n");
-                        Receipt.WriteLine("CURRENCY :" + TotalAmount + "\n");
-                        Receipt.WriteLine("ORDER NO. :" + OrderNo + "\n");
-                        Receipt.WriteLine("MBB Trx ID #:     " + MBBTransId + "\n");
-                        Receipt.WriteLine("END TIME :" + EndTime + "\n");
-                        Receipt.WriteLine("USER ACCOUNT :" + UserAccount + "\n");
-                        Receipt.WriteLine("CARD TYPE DESC :" + CardTypeDesc + "\n");
                     }
                 }
                 else
@@ -625,7 +510,6 @@ namespace serialCommunicationECR
         private string MsgFormat(string ReceivedMessege)
         {
             string msgPacket = "";
-            System.Diagnostics.Debug.WriteLine(ReceivedMessege);
 
             if (ReceivedMessege != "")
             {
@@ -715,7 +599,7 @@ namespace serialCommunicationECR
                     {
                         PartnerTrxID = ReceivedMessege.Substring(50, 32);
                         AlipayTrxID = ReceivedMessege.Substring(82, 64);
-                        CustomerID = ReceivedMessege.Substring(146, 32);
+                        CustomerID = ReceivedMessege.Substring(146, 26);
 
                         // msg
                         msgPacket += "PartnerTrxID :" + PartnerTrxID + "\n";
@@ -723,68 +607,80 @@ namespace serialCommunicationECR
                         msgPacket += "CustomerID :" + CustomerID + "\n";
                     }
 
-                    if (ReceivedMessege.Length > 178)
-                    {
-                        StatusDesc = ReceivedMessege.Substring(178, 32);
-                        Recall = ReceivedMessege.Substring(210, 1);
-                        msgPacket += "StatusDesc :" + StatusDesc + "\n";
-                        msgPacket += "Recall :" + Recall + "\n";
-                    }
+                }
+                if (ResponseMsg == "R203")
+                {
+                    ResponseMsg = "REFUND";
+                    CardNo = ReceivedMessege.Substring(4, 19);
+                    ExpiryDate = ReceivedMessege.Substring(23, 4);
+                    StatusCode = ReceivedMessege.Substring(27, 2);
+                    ApprovalCode = ReceivedMessege.Substring(29, 6);
+                    RRN = ReceivedMessege.Substring(35, 12);
+                    TransactionTrace = ReceivedMessege.Substring(47, 6);
+                    BatchNumber = ReceivedMessege.Substring(53, 6);
+                    HostNo = ReceivedMessege.Substring(59, 2);
+                    TID = ReceivedMessege.Substring(61, 8);
+                    MID = ReceivedMessege.Substring(69, 15);
+                    AID = ReceivedMessege.Substring(84, 14);
+                    TC = ReceivedMessege.Substring(98, 16);
+                    CardholderName = ReceivedMessege.Substring(114, 26);
+                    CardType = ReceivedMessege.Substring(140, 2);
 
+
+                    // display in window
+                    msgPacket += "Response :" + ResponseMsg + "\n";
+                    msgPacket += "CardNo :" + CardNo + "\n";
+                    msgPacket += "ExpiryDate :" + ExpiryDate + "\n";
+                    msgPacket += "StatusCode :" + StatusCode + "\n";
+                    msgPacket += "ApprovalCode :" + ApprovalCode + "\n";
+                    msgPacket += "RRN :" + RRN + "\n";
+                    msgPacket += "TransactionTrace :" + TransactionTrace + "\n";
+                    msgPacket += "BatchNumber :" + BatchNumber + "\n";
+                    msgPacket += "HostNo :" + HostNo + "\n";
+                    msgPacket += "TID :" + TID + "\n";
+                    msgPacket += "MID :" + MID + "\n";
+                    msgPacket += "AID :" + AID + "\n";
+                    msgPacket += "TC :" + TC + "\n";
+                    msgPacket += "CardholderName :" + CardholderName + "\n";
+                    msgPacket += "CardType :" + CardType + "\n";
+
+                    if (ReceivedMessege.Length > 142)
+                    {
+                        string amount = ReceivedMessege.Substring(222, 12);
+                        string originalAmount = ReceivedMessege.Substring(234, 12);
+                        PartnerTrxID = ReceivedMessege.Substring(246, 32);
+                        AlipayTrxID = ReceivedMessege.Substring(278, 64);
+                        CustomerID = ReceivedMessege.Substring(342, 26);
+
+                        // msg
+                        msgPacket += "Amount :" + amount + "\n";
+                        msgPacket += "Original Amount :" + amount + "\n";
+                        msgPacket += "PartnerTrxID :" + PartnerTrxID + "\n";
+                        msgPacket += "AlipayTrxID :" + AlipayTrxID + "\n";
+                        msgPacket += "CustomerID :" + CustomerID + "\n";
+                    }
                 }
                 else if (ResponseMsg == "R500")
                 {
                     ResponseMsg = "Settlement";
-                    HostNo = ReceivedMessege.Substring(4, 2);
-                    StatusCode = ReceivedMessege.Substring(6, 2);
-                    BatchNumber = ReceivedMessege.Substring(8, 6);
-                    BatchCount = ReceivedMessege.Substring(14, 3);
-                    BatchAmount = ReceivedMessege.Substring(17, 12);
-
-                    // display in window
-                    msgPacket += "Response :" + ResponseMsg + "\n";
-                    msgPacket += "HostNo :" + HostNo + "\n";
-                    msgPacket += "StatusCode :" + StatusCode + "\n";
-                    msgPacket += "BatchNumber :" + BatchNumber + "\n";
-                    msgPacket += "BatchCount :" + BatchCount + "\n";
-                    msgPacket += "BatchAmount :" + BatchAmount + "\n";
-
-                    if (ReceivedMessege.Length > 29)
+                    string allHostMessage = ReceivedMessege.Substring(4);
+                    for (int i = 0; i < allHostMessage.Length; i = i + 25)
                     {
-                        HostNo = ReceivedMessege.Substring(29, 2);
-                        StatusCode = ReceivedMessege.Substring(31, 2);
-                        BatchNumber = ReceivedMessege.Substring(33, 6);
-                        BatchCount = ReceivedMessege.Substring(39, 3);
-                        BatchAmount = ReceivedMessege.Substring(42, 12);
+                        HostNo = allHostMessage.Substring(i, 2);
+                        StatusCode = allHostMessage.Substring(i + 2, 2);
+                        BatchNumber = allHostMessage.Substring(i + 4, 6);
+                        BatchCount = allHostMessage.Substring(i + 10, 3);
+                        BatchAmount = allHostMessage.Substring(i + 13, 12);
 
+                        // display in window
                         msgPacket += "\n";
+                        msgPacket += "Response :" + ResponseMsg + "\n";
                         msgPacket += "HostNo :" + HostNo + "\n";
                         msgPacket += "StatusCode :" + StatusCode + "\n";
                         msgPacket += "BatchNumber :" + BatchNumber + "\n";
                         msgPacket += "BatchCount :" + BatchCount + "\n";
                         msgPacket += "BatchAmount :" + BatchAmount + "\n";
                     }
-                    else if (ReceivedMessege.Length > 54)
-                    {
-                        HostNo = ReceivedMessege.Substring(54, 2);
-                        StatusCode = ReceivedMessege.Substring(56, 2);
-                        BatchNumber = ReceivedMessege.Substring(58, 6);
-                        BatchCount = ReceivedMessege.Substring(64, 3);
-                        BatchAmount = ReceivedMessege.Substring(67, 12);
-
-                        msgPacket += "\n";
-                        msgPacket += "HostNo :" + HostNo + "\n";
-                        msgPacket += "StatusCode :" + StatusCode + "\n";
-                        msgPacket += "BatchNumber :" + BatchNumber + "\n";
-                        msgPacket += "BatchCount :" + BatchCount + "\n";
-                        msgPacket += "BatchAmount :" + BatchAmount + "\n";
-                    }
-                    else if (ReceivedMessege.Length > 79) 
-                    {
-                        msgPacket += "Other Host : " + ReceivedMessege.Substring(79);
-                    }
-
-
                 }
 
                 else if (ResponseMsg == "R290")
@@ -806,7 +702,7 @@ namespace serialCommunicationECR
 
                 }
 
-                else if (ResponseMsg == "Q200" || ResponseMsg == "Q290")
+                else if (ResponseMsg == "Q200")
                 {
                     ResponseMsg = "QR SALE";
                     StatusCode = ReceivedMessege.Substring(4, 2);
@@ -835,10 +731,11 @@ namespace serialCommunicationECR
                         CashFeeType = ReceivedMessege.Substring(98, 3);
                         CashFee = ReceivedMessege.Substring(101, 12);
                         OrderNo = ReceivedMessege.Substring(113, 14);
-                        MBBTransId = ReceivedMessege.Substring(127, 32);
-                        EndTime = ReceivedMessege.Substring(159, 14);
-                        UserAccount = ReceivedMessege.Substring(173, 128);
-                        CardTypeDesc = ReceivedMessege.Substring(301, 100);
+                        int mbbTransIdLength = Convert.ToInt16(ReceivedMessege.Substring(127, 4));
+                        MBBTransId = ReceivedMessege.Substring(131, mbbTransIdLength);
+                        EndTime = ReceivedMessege.Substring(131 + mbbTransIdLength, 14);
+                        UserAccount = ReceivedMessege.Substring(145 + mbbTransIdLength, 128);
+                        CardTypeDesc = ReceivedMessege.Substring(273 + mbbTransIdLength, 100);
 
                         // display in window
                         msgPacket += "AppId :" + AppId + "\n";
@@ -854,7 +751,54 @@ namespace serialCommunicationECR
                     }
 
                 }
-                else if (ResponseMsg == "G200" || ResponseMsg == "G290")
+                else if (ResponseMsg == "Q203")
+                {
+                    ResponseMsg = "QR SALE";
+                    StatusCode = ReceivedMessege.Substring(4, 2);
+                    StatusDesc = ReceivedMessege.Substring(6, 32);
+                    TransactionTrace = ReceivedMessege.Substring(38, 6);
+                    BatchNumber = ReceivedMessege.Substring(44, 6);
+                    HostNo = ReceivedMessege.Substring(50, 2);
+                    TID = ReceivedMessege.Substring(52, 8);
+                    MID = ReceivedMessege.Substring(60, 15);
+
+
+                    msgPacket += "Response :" + ResponseMsg + "\n";
+                    msgPacket += "StatusCode :" + StatusCode + "\n";
+                    msgPacket += "StatusDesc :" + StatusDesc + "\n";
+                    msgPacket += "TransactionTrace :" + TransactionTrace + "\n";
+                    msgPacket += "BatchNumber :" + BatchNumber + "\n";
+                    msgPacket += "HostNo :" + HostNo + "\n";
+                    msgPacket += "TID :" + TID + "\n";
+                    msgPacket += "MID :" + MID + "\n";
+
+                    if (ReceivedMessege.Length > 75)
+                    {
+                        AppId = ReceivedMessege.Substring(75, 8);
+                        Currency = ReceivedMessege.Substring(83, 3);
+                        TotalAmount = ReceivedMessege.Substring(86, 12);
+                        string refundNo = ReceivedMessege.Substring(98, 32);
+                        int mbbTransIdLength = Convert.ToInt16(ReceivedMessege.Substring(130, 4));
+                        MBBTransId = ReceivedMessege.Substring(134, mbbTransIdLength);
+                        int refundIdLength = Convert.ToInt16(ReceivedMessege.Substring(134 + mbbTransIdLength, 4));
+                        string refundId = ReceivedMessege.Substring(138 + mbbTransIdLength, refundIdLength);
+                        EndTime = ReceivedMessege.Substring(138 + mbbTransIdLength + refundIdLength, 14);
+                        UserAccount = ReceivedMessege.Substring(152 + mbbTransIdLength + refundIdLength, 128);
+                        CardTypeDesc = ReceivedMessege.Substring(280 + mbbTransIdLength + refundIdLength, 100);
+
+                        // display in window
+                        msgPacket += "AppId :" + AppId + "\n";
+                        msgPacket += "Currency :" + Currency + "\n";
+                        msgPacket += "TotalAmount :" + TotalAmount + "\n";
+                        msgPacket += "Refund No :" + refundNo + "\n";
+                        msgPacket += "MBBTransId :" + MBBTransId + "\n";
+                        msgPacket += "Refund ID :" + refundId + "\n";
+                        msgPacket += "EndTime :" + EndTime + "\n";
+                        msgPacket += "UserAccount :" + UserAccount + "\n";
+                        msgPacket += "CardTypeDesc :" + CardTypeDesc + "\n";
+                    }
+                }
+                else if (ResponseMsg == "G200")
                 {
                     ResponseMsg = "QR SALE";
                     StatusCode = ReceivedMessege.Substring(4, 2);
@@ -888,14 +832,7 @@ namespace serialCommunicationECR
                         msgPacket += "ExchangeRate :" + ExchangeRate + "\n";
                     }
                 }
-                else if (ResponseMsg == "R902")
-                {
-                    ResponseMsg = "QR SALE";
-                    StatusCode = ReceivedMessege.Substring(4, 2);
 
-                    msgPacket += "Response :" + ResponseMsg + "\n";
-                    msgPacket += "StatusCode :" + StatusCode + "\n";
-                }
                 #endregion
 
 
