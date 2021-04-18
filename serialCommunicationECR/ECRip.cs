@@ -127,7 +127,7 @@ namespace serialCommunicationECR
             int li_status = 0;
             ecr.SendReceive(command, ref ls_receive, ref li_status, ref ls_status, 2000);
 
-            richTextBox1.Text = ls_receive;
+            richTextBox1.Text = MsgFormat(ls_receive);
             lbl_status.Text = ls_status;
 
         }
@@ -208,7 +208,14 @@ namespace serialCommunicationECR
 
             if (textBox1.Text != "C201")
             {
-                command += textBox4.Text.PadRight(24, ' ');
+                if (textBox1.Text == "C203")
+                {
+                    command += textBox5.Text.PadRight(24, ' ');
+                }
+                else
+                {
+                    command += textBox4.Text.PadRight(24, ' ');
+                }
             }
 
             //ecr.SendReceive(command, ref ls_receive, ref li_status, ref ls_status, 1000);
@@ -300,7 +307,7 @@ namespace serialCommunicationECR
             }
             else
             {
-                richTextBox1.Text = ls_receive;
+                richTextBox1.Text = MsgFormat(ls_receive);
                 lbl_status.Text = ls_status;
                
                 button2.Enabled = true;
