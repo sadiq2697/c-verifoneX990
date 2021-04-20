@@ -568,9 +568,9 @@ namespace serialCommunicationECR
 
                     if (ReceivedMessege.Length > 142)
                     {
-                        PartnerTrxID = ReceivedMessege.Substring(222, 32);
-                        AlipayTrxID = ReceivedMessege.Substring(254, 64);
-                        CustomerID = ReceivedMessege.Substring(280, 26);
+                        PartnerTrxID = ReceivedMessege.Substring(142, 32);
+                        AlipayTrxID = ReceivedMessege.Substring(174, 64);
+                        CustomerID = ReceivedMessege.Substring(238, 32);
 
                         // msg
                         msgPacket += "PartnerTrxID :" + PartnerTrxID + "\n";
@@ -653,11 +653,11 @@ namespace serialCommunicationECR
 
                     if (ReceivedMessege.Length > 142)
                     {
-                        string amount = ReceivedMessege.Substring(222, 12);
-                        string originalAmount = ReceivedMessege.Substring(234, 12);
-                        PartnerTrxID = ReceivedMessege.Substring(246, 32);
-                        AlipayTrxID = ReceivedMessege.Substring(278, 64);
-                        CustomerID = ReceivedMessege.Substring(342, 26);
+                        string amount = ReceivedMessege.Substring(142, 12);
+                        string originalAmount = ReceivedMessege.Substring(154, 12);
+                        PartnerTrxID = ReceivedMessege.Substring(166, 32);
+                        AlipayTrxID = ReceivedMessege.Substring(198, 64);
+                        CustomerID = ReceivedMessege.Substring(262, 26);
 
                         // msg
                         msgPacket += "Amount :" + amount + "\n";
@@ -695,7 +695,7 @@ namespace serialCommunicationECR
 
                 else if (ResponseMsg == "R290")
                 {
-                    ResponseMsg = "SALE";
+                    ResponseMsg = "QR SALE";
                     StatusCode = ReceivedMessege.Substring(4, 2);
                     ApprovalCode = ReceivedMessege.Substring(6, 6);
                     TransactionTrace = ReceivedMessege.Substring(12, 6);
@@ -704,11 +704,64 @@ namespace serialCommunicationECR
                     TID = ReceivedMessege.Substring(26, 8);
                     MID = ReceivedMessege.Substring(34, 15);
 
-                    PartnerTrxID = ReceivedMessege.Substring(49, 32);
-                    AlipayTrxID = ReceivedMessege.Substring(81, 64);
-                    if (ReceivedMessege.Length > 145)
-                        CustomerID = ReceivedMessege.Substring(145, 26);
+                    msgPacket += "Response :" + ResponseMsg + "\n";
+                    msgPacket += "StatusCode :" + StatusCode + "\n";
+                    msgPacket += "ApprovalCode :" + ApprovalCode + "\n";
+                    msgPacket += "TransactionTrace :" + TransactionTrace + "\n";
+                    msgPacket += "BatchNumber :" + BatchNumber + "\n";
+                    msgPacket += "HostNo :" + HostNo + "\n";
+                    msgPacket += "TID :" + TID + "\n";
+                    msgPacket += "MID :" + MID + "\n";
 
+
+                    if (ReceivedMessege.Length > 49)
+                    {
+                        PartnerTrxID = ReceivedMessege.Substring(49, 32);
+                        AlipayTrxID = ReceivedMessege.Substring(81, 64);
+                        CustomerID = ReceivedMessege.Substring(145, 32);
+
+                        // msg
+                        msgPacket += "PartnerTrxID :" + PartnerTrxID + "\n";
+                        msgPacket += "AlipayTrxID :" + AlipayTrxID + "\n";
+                        msgPacket += "CustomerID :" + CustomerID + "\n";
+                    }
+
+                }
+
+                else if (ResponseMsg == "R292")
+                {
+                    ResponseMsg = "QR REFUND";
+                    Amount = ReceivedMessege.Substring(4, 12);
+                    string originalAmount = ReceivedMessege.Substring(16, 12);
+                    StatusCode = ReceivedMessege.Substring(28, 2);
+                    TransactionTrace = ReceivedMessege.Substring(30, 6);
+                    BatchNumber = ReceivedMessege.Substring(36, 6);
+                    HostNo = ReceivedMessege.Substring(42, 2);
+                    TID = ReceivedMessege.Substring(44, 8);
+                    MID = ReceivedMessege.Substring(52, 15);
+
+                    msgPacket += "Response :" + ResponseMsg + "\n";
+                    msgPacket += "Amount :" + Amount + "\n";
+                    msgPacket += "OriginalAmount :" + originalAmount + "\n";
+                    msgPacket += "StatusCode :" + StatusCode + "\n";
+                    msgPacket += "TransactionTrace :" + TransactionTrace + "\n";
+                    msgPacket += "BatchNumber :" + BatchNumber + "\n";
+                    msgPacket += "HostNo :" + HostNo + "\n";
+                    msgPacket += "TID :" + TID + "\n";
+                    msgPacket += "MID :" + MID + "\n";
+
+
+                    if (ReceivedMessege.Length > 67)
+                    {
+                        PartnerTrxID = ReceivedMessege.Substring(67, 32);
+                        AlipayTrxID = ReceivedMessege.Substring(99, 64);
+                        CustomerID = ReceivedMessege.Substring(163, 32);
+
+                        // msg
+                        msgPacket += "PartnerTrxID :" + PartnerTrxID + "\n";
+                        msgPacket += "AlipayTrxID :" + AlipayTrxID + "\n";
+                        msgPacket += "CustomerID :" + CustomerID + "\n";
+                    }
 
                 }
 
@@ -763,7 +816,7 @@ namespace serialCommunicationECR
                 }
                 else if (ResponseMsg == "Q203")
                 {
-                    ResponseMsg = "QR SALE";
+                    ResponseMsg = "QR REFUND";
                     StatusCode = ReceivedMessege.Substring(4, 2);
                     StatusDesc = ReceivedMessege.Substring(6, 32);
                     TransactionTrace = ReceivedMessege.Substring(38, 6);
@@ -808,9 +861,17 @@ namespace serialCommunicationECR
                         msgPacket += "CardTypeDesc :" + CardTypeDesc + "\n";
                     }
                 }
-                else if (ResponseMsg == "G200")
+                else if (ResponseMsg == "G200" || ResponseMsg == "G290" || ResponseMsg == "G292" || ResponseMsg == "G203")
                 {
-                    ResponseMsg = "QR SALE";
+                    ResponseMsg = "";
+                    if (ResponseMsg == "G292" || ResponseMsg == "G203")
+                    {
+                        ResponseMsg = "QR REFUND";
+                    }
+                    else
+                    {
+                        ResponseMsg = "QR SALE";
+                    }
                     StatusCode = ReceivedMessege.Substring(4, 2);
                     TransactionTrace = ReceivedMessege.Substring(6, 6);
                     BatchNumber = ReceivedMessege.Substring(12, 6);
@@ -867,5 +928,9 @@ namespace serialCommunicationECR
             return msgPacket;
 
         }
+
+
+
     }
+}
 }
