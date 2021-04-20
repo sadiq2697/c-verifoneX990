@@ -680,7 +680,10 @@ namespace serialCommunicationECR
                         BatchAmount = allHostMessage.Substring(i + 13, 12);
 
                         // display in window
-                        msgPacket += "\n";
+                        if (i == 0)
+                        {
+                            msgPacket += "\n";
+                        }
                         msgPacket += "Response :" + ResponseMsg + "\n";
                         msgPacket += "HostNo :" + HostNo + "\n";
                         msgPacket += "StatusCode :" + StatusCode + "\n";
@@ -838,6 +841,17 @@ namespace serialCommunicationECR
                         msgPacket += "TotalRMB :" + TotalRMB + "\n";
                         msgPacket += "ExchangeRate :" + ExchangeRate + "\n";
                     }
+                }
+                else if (ResponseMsg == "R906")
+                {
+                    ResponseMsg = "QR SALE";
+                    StatusCode = ReceivedMessege.Substring(4, 2);
+                    int length = Convert.ToInt16(ReceivedMessege.Substring(6, 4));
+                    string qrCode = ReceivedMessege.Substring(10, length);
+
+                    msgPacket += "Response :" + ResponseMsg + "\n";
+                    msgPacket += "StatusCode :" + StatusCode + "\n";
+                    msgPacket += "QR Code Value :" + qrCode + "\n";
                 }
 
                 #endregion
