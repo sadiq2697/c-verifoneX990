@@ -680,7 +680,7 @@ namespace serialCommunicationECR
                         BatchAmount = allHostMessage.Substring(i + 13, 12);
 
                         // display in window
-                        if (i == 0)
+                        if (i != 0)
                         {
                             msgPacket += "\n";
                         }
