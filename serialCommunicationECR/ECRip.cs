@@ -181,6 +181,7 @@ namespace serialCommunicationECR
 
             if (textBox1.Text == "C290")
             {
+                command += textBox4.Text.PadLeft(2, '0');
                 string QRCode = textBox6.Text;
 
                  string totalL = QRCode.Length.ToString().PadLeft(4, '0');// to get total length of qrcode
@@ -211,6 +212,10 @@ namespace serialCommunicationECR
                 if (textBox1.Text == "C203")
                 {
                     command += textBox5.Text.PadRight(24, ' ');
+                }
+                else if (textBox1.Text == "C290" || textBox1.Text == "C292") 
+                {
+                    command += "";
                 }
                 else
                 {
@@ -932,5 +937,4 @@ namespace serialCommunicationECR
 
 
     }
-}
 }
