@@ -74,9 +74,12 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HexEncoding">
+      <HintPath>..\..\..\..\..\..\..\project\Pys_Operation\MMS_CONSOLE\TPMS_DOWNLOAD\ConsoleMMSv2\HexEncoding.dll</HintPath>
+    </Reference>
     <Reference Include="PayECR, Version=1.0.0.4, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\PayECR\bin\x86\Debug\PayECR.dll</HintPath>
+      <HintPath>..\PayECR\bin\x86\Debug\PayECR.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

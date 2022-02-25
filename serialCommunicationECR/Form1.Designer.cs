@@ -73,11 +73,16 @@ namespace serialCommunicationECR
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button3
@@ -220,7 +225,7 @@ namespace serialCommunicationECR
             // 
             this.button13.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.ForeColor = System.Drawing.Color.Maroon;
-            this.button13.Location = new System.Drawing.Point(677, 389);
+            this.button13.Location = new System.Drawing.Point(696, 487);
             this.button13.Margin = new System.Windows.Forms.Padding(4);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(152, 46);
@@ -284,7 +289,7 @@ namespace serialCommunicationECR
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(179, 186);
+            this.groupBox3.Size = new System.Drawing.Size(179, 105);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Wallet ECR";
@@ -294,7 +299,7 @@ namespace serialCommunicationECR
             // 
             this.button16.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button16.ForeColor = System.Drawing.Color.Maroon;
-            this.button16.Location = new System.Drawing.Point(20, 77);
+            this.button16.Location = new System.Drawing.Point(20, 61);
             this.button16.Margin = new System.Windows.Forms.Padding(4);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(133, 28);
@@ -346,6 +351,7 @@ namespace serialCommunicationECR
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.button10);
+            this.groupBox4.Controls.Add(this.button12);
             this.groupBox4.Controls.Add(this.button9);
             this.groupBox4.Controls.Add(this.button7);
             this.groupBox4.Controls.Add(this.button25);
@@ -359,7 +365,7 @@ namespace serialCommunicationECR
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(179, 343);
+            this.groupBox4.Size = new System.Drawing.Size(173, 425);
             this.groupBox4.TabIndex = 23;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Additional ECR";
@@ -368,7 +374,7 @@ namespace serialCommunicationECR
             // 
             this.button10.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.Maroon;
-            this.button10.Location = new System.Drawing.Point(16, 286);
+            this.button10.Location = new System.Drawing.Point(16, 273);
             this.button10.Margin = new System.Windows.Forms.Padding(4);
             this.button10.Name = "button10";
             this.button10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -382,7 +388,7 @@ namespace serialCommunicationECR
             // 
             this.button9.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.Maroon;
-            this.button9.Location = new System.Drawing.Point(16, 250);
+            this.button9.Location = new System.Drawing.Point(16, 241);
             this.button9.Margin = new System.Windows.Forms.Padding(4);
             this.button9.Name = "button9";
             this.button9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -417,7 +423,7 @@ namespace serialCommunicationECR
             this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox6.Size = new System.Drawing.Size(178, 197);
+            this.groupBox6.Size = new System.Drawing.Size(178, 137);
             this.groupBox6.TabIndex = 25;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "MyKad ECR";
@@ -426,7 +432,7 @@ namespace serialCommunicationECR
             // 
             this.button18.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button18.ForeColor = System.Drawing.Color.Maroon;
-            this.button18.Location = new System.Drawing.Point(21, 135);
+            this.button18.Location = new System.Drawing.Point(21, 97);
             this.button18.Margin = new System.Windows.Forms.Padding(4);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(133, 28);
@@ -438,7 +444,7 @@ namespace serialCommunicationECR
             // 
             this.button33.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button33.ForeColor = System.Drawing.Color.Maroon;
-            this.button33.Location = new System.Drawing.Point(21, 86);
+            this.button33.Location = new System.Drawing.Point(21, 61);
             this.button33.Margin = new System.Windows.Forms.Padding(4);
             this.button33.Name = "button33";
             this.button33.Size = new System.Drawing.Size(133, 28);
@@ -450,7 +456,7 @@ namespace serialCommunicationECR
             // 
             this.button34.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button34.ForeColor = System.Drawing.Color.Maroon;
-            this.button34.Location = new System.Drawing.Point(21, 41);
+            this.button34.Location = new System.Drawing.Point(21, 25);
             this.button34.Margin = new System.Windows.Forms.Padding(4);
             this.button34.Name = "button34";
             this.button34.Size = new System.Drawing.Size(133, 28);
@@ -665,7 +671,7 @@ namespace serialCommunicationECR
             // 
             this.button11.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.Maroon;
-            this.button11.Location = new System.Drawing.Point(410, 452);
+            this.button11.Location = new System.Drawing.Point(410, 443);
             this.button11.Margin = new System.Windows.Forms.Padding(4);
             this.button11.Name = "button11";
             this.button11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -679,14 +685,68 @@ namespace serialCommunicationECR
             // 
             this.button12.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.Maroon;
-            this.button12.Location = new System.Drawing.Point(677, 300);
+            this.button12.Location = new System.Drawing.Point(16, 311);
             this.button12.Margin = new System.Windows.Forms.Padding(4);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(152, 46);
+            this.button12.Size = new System.Drawing.Size(133, 28);
             this.button12.TabIndex = 27;
             this.button12.Text = "MiFare";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button14
+            // 
+            this.button14.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.ForeColor = System.Drawing.Color.Maroon;
+            this.button14.Location = new System.Drawing.Point(410, 479);
+            this.button14.Margin = new System.Windows.Forms.Padding(4);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(133, 28);
+            this.button14.TabIndex = 28;
+            this.button14.Text = "Genting";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button15);
+            this.groupBox2.Controls.Add(this.button17);
+            this.groupBox2.Font = new System.Drawing.Font("Verdana", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.groupBox2.Location = new System.Drawing.Point(657, 225);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(179, 112);
+            this.groupBox2.TabIndex = 29;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "OTSR ECR";
+            // 
+            // button15
+            // 
+            this.button15.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button15.ForeColor = System.Drawing.Color.Maroon;
+            this.button15.Location = new System.Drawing.Point(20, 61);
+            this.button15.Margin = new System.Windows.Forms.Padding(4);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(133, 28);
+            this.button15.TabIndex = 5;
+            this.button15.Text = "Enquiry";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button17
+            // 
+            this.button17.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button17.ForeColor = System.Drawing.Color.Maroon;
+            this.button17.Location = new System.Drawing.Point(20, 25);
+            this.button17.Margin = new System.Windows.Forms.Padding(4);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(133, 28);
+            this.button17.TabIndex = 2;
+            this.button17.Text = "Redemption";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // Form1
             // 
@@ -694,7 +754,8 @@ namespace serialCommunicationECR
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1149, 567);
-            this.Controls.Add(this.button12);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.button14);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox6);
@@ -716,6 +777,7 @@ namespace serialCommunicationECR
             this.groupBox4.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -768,6 +830,10 @@ namespace serialCommunicationECR
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button17;
     }
 }
 

@@ -1,16 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serialCommunicationECR", "serialCommunicationECR\serialCommunicationECR.csproj", "{637E8656-A8BB-4A6E-8C62-5186951A4332}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B97A7D53-9423-45B8-9530-357E9CA9E0A5} = {B97A7D53-9423-45B8-9530-357E9CA9E0A5}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayECR", "..\PayECR\PayECR.csproj", "{B97A7D53-9423-45B8-9530-357E9CA9E0A5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayECRx64", "PayECRx64\PayECRx64.csproj", "{1345B400-03BF-4A03-860B-36C410E325BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayECR", "PayECR\PayECR.csproj", "{B97A7D53-9423-45B8-9530-357E9CA9E0A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,14 +26,6 @@ Global
 		{637E8656-A8BB-4A6E-8C62-5186951A4332}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{637E8656-A8BB-4A6E-8C62-5186951A4332}.Release|Any CPU.Build.0 = Release|Any CPU
 		{637E8656-A8BB-4A6E-8C62-5186951A4332}.Release|x86.ActiveCfg = Release|Any CPU
-		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Debug|Any CPU.Build.0 = Debug|x86
-		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Debug|x86.ActiveCfg = Debug|x86
-		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Debug|x86.Build.0 = Debug|x86
-		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Release|x86.ActiveCfg = Release|x86
-		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Release|x86.Build.0 = Release|x86
 		{1345B400-03BF-4A03-860B-36C410E325BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1345B400-03BF-4A03-860B-36C410E325BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1345B400-03BF-4A03-860B-36C410E325BC}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -42,8 +34,19 @@ Global
 		{1345B400-03BF-4A03-860B-36C410E325BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1345B400-03BF-4A03-860B-36C410E325BC}.Release|x86.ActiveCfg = Release|Any CPU
 		{1345B400-03BF-4A03-860B-36C410E325BC}.Release|x86.Build.0 = Release|Any CPU
+		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Debug|x86.ActiveCfg = Debug|x86
+		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Debug|x86.Build.0 = Debug|x86
+		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Release|x86.ActiveCfg = Release|x86
+		{B97A7D53-9423-45B8-9530-357E9CA9E0A5}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CF78203-6BF0-4B82-B71A-2A1B40265B45}
 	EndGlobalSection
 EndGlobal

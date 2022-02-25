@@ -377,9 +377,11 @@ namespace serialCommunicationECR
             f1.label2.Hide();
             f1.label3.Hide();
             f1.label7.Hide();
+            f1.label10.Hide();
             f1.textBox3.Hide();
             f1.textBox4.Hide();
             f1.textBox5.Hide();
+            f1.textBox6.Hide();
             f1.label6.Text = "VALUE REDEMPTION";
             f1.command = "C244";
             f1.comport = comboBox1.Text;
@@ -576,7 +578,7 @@ namespace serialCommunicationECR
             f1.Show();
             this.Refresh();
         }
-
+        // read mifare
         private void button12_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -596,6 +598,71 @@ namespace serialCommunicationECR
             f1.comport = comboBox1.Text;
             f1.Show();
             this.Refresh();
+        }
+
+        // read genting card
+        private void button14_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            // ECRip f1 = new ECRip();
+            f1.textBox2.Hide();
+            f1.textBox3.Hide();
+            f1.textBox4.Hide();
+            f1.textBox5.Hide();
+            f1.label1.Hide();
+            f1.label2.Hide();
+            f1.label3.Hide();
+            f1.label7.Hide();
+            f1.label10.Hide();
+            f1.textBox6.Hide();
+            f1.command = "C800";
+            f1.label6.Text = "Genting";
+            f1.comport = comboBox1.Text;
+            f1.Show();
+            this.Refresh();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            f1.command = "";
+            this.Hide();
+            f1.label1.Text = "AMOUNT (RM)";
+            f1.label2.Hide();
+            f1.label3.Hide();
+            f1.label7.Hide();
+            f1.label10.Hide();
+            f1.textBox3.Hide();
+            f1.textBox4.Hide();
+            f1.textBox5.Hide();
+            f1.textBox6.Hide();
+            f1.label6.Text = "OTSR REDEMPTION";
+            f1.command = "C275";
+            f1.comport = comboBox1.Text;
+            f1.Show();
+            this.Refresh();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            f1.command = "";
+            this.Hide();
+            f1.textBox2.Hide();
+            f1.textBox3.Hide();
+            f1.textBox4.Hide();
+            f1.textBox5.Hide();
+            f1.textBox6.Hide();
+            f1.label10.Hide();
+            f1.label1.Hide();
+            f1.label2.Hide();
+            f1.label3.Hide();
+            f1.label7.Hide();
+            this.Refresh();
+            f1.label6.Text = "OTSR ENQUIRY";
+            f1.command = "C276";
+            f1.comport = comboBox1.Text;
+            f1.Show();
+            this.Refresh();
+
         }
     }
 }
